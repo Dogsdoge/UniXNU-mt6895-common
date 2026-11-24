@@ -1,0 +1,19 @@
+schema_version = 2
+
+[soc]
+name = "MT6895"
+description = "MediaTek MT6895 (Dimensity 8100) shared profile for UniXNU iOS 16. SoC-level values (GICv3, timer, UFS, CPU topology) from MT6895 mainline DTSI + hakios-xaga board.h (verified against stock LK FDT + vendor_boot.dtb + live /proc/device-tree). Peripheral/board-specific values belong in the device repo."
+source_repository = "local: MT6895-Mainline/linux dtsi + lizi600jin/hakios-xaga docs/BOARD.md"
+source_revision = "pending-pin"
+
+[components]
+include = []
+
+# Verified SoC-level hardware constants (from hakios-xaga/docs/BOARD.md, triple-checked):
+#   GICD 0x0C000000 (0x40000) / GICR 0x0C040000 (0x200000)
+#   timer freq 13000000
+#   CPU topology: 4x A55 (Aff1=0) + 3x A78 + 1x A78 prime (cluster 4-3-1)
+#   UART 0x11001000
+#   UFS HC 0x112B0000, LUN 2, 4096B logical sectors
+#   TOPRGU (WDT) 0x1C007000
+#   PSCI = SMC (psci_hvc=0)
